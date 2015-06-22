@@ -36,6 +36,7 @@ define(
         function ImageryController($scope, telemetryHandler) {
             var date = "",
                 time = "",
+                zone = "",
                 imageUrl = "",
                 paused = false,
                 handle;
@@ -49,11 +50,16 @@ define(
 
             function updateValues() {
                 var imageObject = handle && handle.getTelemetryObjects()[0],
+                    timestamp,
                     m;
                 if (imageObject && !paused) {
-                    m = moment.utc(handle.getDomainValue(imageObject));
-                    date = m.format(DATE_FORMAT);
-                    time = m.format(TIME_FORMAT);
+                    timestamp = handle.getDomainValue(imageObject);
+                    m = timestamp !== undefined ?
+                            moment.utc(handle.getDomainValue(imageObject)) :
+                            undefined;
+                    date = m ? m.format(DATE_FORMAT) : "";
+                    time = m ? m.format(TIME_FORMAT) : "";
+                    zone = m ? "UTC" : "";
                     imageUrl = handle.getRangeValue(imageObject);
                 }
             }
@@ -102,7 +108,7 @@ define(
                  * @returns {string} the time
                  */
                 getZone: function () {
-                    return "UTC";
+                    return zone;
                 },
                 /**
                  * Get the URL of the image telemetry to display.
