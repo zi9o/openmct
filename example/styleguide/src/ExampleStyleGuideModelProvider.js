@@ -30,12 +30,12 @@ define(
             var pages = {};
 
             // Add pages
-            pages['page0'] = {
+            pages['intro'] = {
                 name: "Intro",
                 type: "styleguide.intro"
             };
 
-            pages['page1'] = {
+            pages['controls'] = {
                 name: "Controls",
                 type: "styleguide.controls"
             };
@@ -47,6 +47,6 @@ define(
             };
         }
 
-        return ExampleStyleGuideModelProvider;
+        return ExampleStyleGuideModelProvider
     }
 );

@@ -50,8 +50,8 @@ define([
                         "type": "folder",
                         "name": "Style Guide",
                         "composition": [
-                            "page0",
-                            "page1"
+                            "intro",
+                            "controls"
                         ]
                     }
                 }
