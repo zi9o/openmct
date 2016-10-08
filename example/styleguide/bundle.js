@@ -65,6 +65,12 @@ define([
                         "$q"
                     ]
                 }
+            ],
+            "stylesheets": [
+                {
+                    "stylesheetUrl": "css/style-guide.css",
+                    "priority": "mandatory"
+                }
             ]
         }
     });
