@@ -46,6 +46,7 @@ define([
     "./src/capabilities/MutationCapability",
     "./src/capabilities/DelegationCapability",
     "./src/capabilities/InstantiationCapability",
+    "./src/runs/TransactingMutationListener",
     "./src/services/Now",
     "./src/services/Throttle",
     "./src/services/Topic",
@@ -78,6 +79,7 @@ define([
     MutationCapability,
     DelegationCapability,
     InstantiationCapability,
+    TransactingMutationListener,
     Now,
     Throttle,
     Topic,
@@ -407,14 +409,10 @@ define([
                     ]
                 }
             ],
-            "roots": [
+            "runs": [
                 {
-                    "id": "mine",
-                    "model": {
-                        "name": "My Items",
-                        "type": "folder",
-                        "composition": []
-                    }
+                    "implementation": TransactingMutationListener,
+                    "depends": ["topic", "transactionService"]
                 }
             ],
             "constants": [
